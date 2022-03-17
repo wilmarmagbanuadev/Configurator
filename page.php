@@ -20,7 +20,8 @@ get_header();
 
                 <?php
                
-               $posts_per_page =  get_option('blank-elements-pro')['product_per_page-count'][0];
+               $posts_per_page =  (get_option('blank-elements-pro')['product_per_page-count'][0]==null)?5:get_option('blank-elements-pro')['product_per_page-count'][0];
+               
                 // check for plugin using plugin name
                 
                 if ( class_exists( 'WooCommerce' ) ) {

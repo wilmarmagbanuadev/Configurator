@@ -35,8 +35,7 @@ function configurator_elementor_fail_load_admin_notice() {
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
-
-		$message = __( 'configurator theme is a lightweight starter theme designed to work perfectly with Elementor Page Builder plugin.', 'configurator-elementor' );
+		$message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with Elementor Page Builder plugin, they work perfectly together!', 'configurator-elementor' );
 
 		$button_text = __( 'Activate Elementor', 'configurator-elementor' );
 		$button_link = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
@@ -45,7 +44,7 @@ function configurator_elementor_fail_load_admin_notice() {
 			return;
 		}
 
-		$message = __( 'configurator theme is a lightweight starter theme. We recommend you use it together with Elementor Page Builder plugin, they work perfectly together!', 'configurator-elementor' );
+		$message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with Elementor Page Builder plugin, they work perfectly together!', 'configurator-elementor' );
 
 		$button_text = __( 'Install Elementor', 'configurator-elementor' );
 		$button_link = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
@@ -180,7 +179,7 @@ function woocommerce_elements_fail_load_admin_notice() {
 			return;
 		}
 
-		$woocommerce_message = __( 'configurator theme is a lightweight starter theme designed to work perfectly with woocommerce plugin.', 'configurator-woocommerce' );
+		$woocommerce_message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with WooCommerce plugin, they work perfectly together!', 'configurator-woocommerce' );
 
 		$woocommerce_button_text = __( 'Activate Woocommerce', 'configurator-woocommerce' );
 		$woocommerce_button_link = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $woocommerce_plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $woocommerce_plugin );
@@ -189,7 +188,7 @@ function woocommerce_elements_fail_load_admin_notice() {
 			return;
 		}
 
-		$woocommerce_message = __( 'configurator theme is a lightweight starter theme. We recommend you use it together with woocommerce plugin, they work perfectly together!', 'configurator-woocommerce' );
+		$woocommerce_message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with WooCommerce plugin, they work perfectly together!', 'configurator-woocommerce' );
 
 		$woocommerce_button_text = __( 'Install Woocommerce', 'configurator-woocommerce' );
 		$woocommerce_button_link = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
