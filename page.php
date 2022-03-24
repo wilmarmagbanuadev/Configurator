@@ -13,23 +13,30 @@
  */
 
 get_header();
+the_content();
 ?>
 <div class="site-content">
         <div class="container clearfix">
-            <main id="primary" class="site-main">
+            <main id="primary" class="site-main" style="padding-left:10px;padding-right:10px;">
 
                 <?php
                
                $posts_per_page =  (get_option('blank-elements-pro')['product_per_page-count'][0]==null)?5:get_option('blank-elements-pro')['product_per_page-count'][0];
+               $products_limit = ($posts_per_page)?'products limit="'.$posts_per_page.'"': null;
+
+               $shop_page_style = get_option('blank-elements-pro')['shop_page_style'][0];
+               $columns = ($shop_page_style)?'columns="'.$shop_page_style.'"':null;
+
+               $display_pagination = get_option('blank-elements-pro')['display_pagination'][0];
+               $paginate = ($display_pagination=='show')?'paginate=true':'paginate=false';
                
                 // check for plugin using plugin name
-                
                 if ( class_exists( 'WooCommerce' ) ) {
                     if(in_array('configurator-template-kits-blocks/configurator-template-kits-blocks.php', apply_filters('active_plugins', get_option('active_plugins')))){ 
                             
                         if(is_woocommerce()){
-                                echo do_shortcode('[products limit='. $posts_per_page.' paginate=true]');
-                            //   require_once( WP_PLUGIN_DIR .'/configurator-template-kits-blocks/woocommerce/archive-product.php' );
+                                //echo do_shortcode('[products limit='. $posts_per_page.' paginate=true]');
+                                echo do_shortcode('['.$products_limit.' '.$columns.' '.$paginate.']');
                             }else if(is_cart()){
                                 echo do_shortcode('[woocommerce_cart]');
                             }else if(is_checkout()){
