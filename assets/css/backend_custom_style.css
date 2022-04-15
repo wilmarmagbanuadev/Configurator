@@ -1,0 +1,51 @@
+#acf-group_624f9d2ee6911 .acf-label label{
+    color: #fff;
+    font-weight: 400;
+}
+#acf-group_624f9d2ee6911 {
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+  }
+  #acf-group_624f9d2ee6911 .acf-tab-group li a {
+    padding: 15px 15px;
+    background-color: #444444;
+    color: #fff;
+    border: unset;
+  }
+  #acf-group_624f9d2ee6911 .acf-tab-group li.active a,
+  #acf-group_624f9d2ee6911 .acf-tab-group li a:hover {
+    border-color:#000042;
+    background-color:#00F1FF;
+    color: #000042;
+  }
+  #acf-group_624f9d2ee6911 .-sidebar {
+    background-color: #444444;
+  }
+  #acf-group_624f9d2ee6911 .acf-input-prepend{
+    background-color: #343A40 !important;
+  color: #fff;
+  border: unset;
+  line-height: 23px;
+  }
+  #acf-group_624f9d2ee6911 .acf-input-prepend,
+  #acf-group_624f9d2ee6911 .acf-input-wrap input{
+    padding: 10px 10px !important;
+  }
+  #acf-group_624f9d2ee6911 .acf-input-wrap input {
+    background-color: #666666;
+    color: #fff !important;
+    border: unset !important;
+  }
+  #acf-group_624f9d2ee6911 .acf-input-wrap input::placeholder{
+    color: #444444 !important;
+  }
+
+  #acf-group_624f9d2ee6911 .acf-switch .acf-switch-on,
+  #acf-group_624f9d2ee6911 .acf-switch .acf-switch-off {
+    background-color:#00F1FF;
+    color: #000042;
+    text-shadow: unset;
+  }
+  #acf-group_624f9d2ee6911 .acf-switch-slider {
+    background-color: #444 !important;
+  }
