@@ -5,15 +5,15 @@
                 /* translators: %s: CMS name, i.e. WordPress. */
                 echo '©'.date('Y').' ';
                 $check_title = (get_bloginfo( 'title' )==null)?'Configurator':get_bloginfo( 'title' );
-                echo (get_field('footer_text','options'))?'<a href="'.site_url().'">'.get_field('footer_text','options').'</a>':'<a href="'.site_url().'">'.$check_title.'</a>';
+                echo (get_option('footer_text'))?'<a href="'.home_url().'">'.get_option('footer_text').'</a>':'<a href="'.home_url().'">'.$check_title.'</a>';
                 ?>
             </div><!-- .site-info -->
-            <?php if(get_field('show_footer_socmed','options')){ ?>
+            <?php if(get_option('footer_socmed')=='true'){ ?>
             <div class="footer-social-links">
                 <ul>
-                <?php if(get_field('facebook','options')){ ?><li><a href="<?php the_field('facebook','options');?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php } ?>
-                <?php if(get_field('twitter','options')){ ?><li><a href="<?php the_field('twitter','options');?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php } ?>
-                <?php if(get_field('linkedin','options')){ ?><li><a href="<?php the_field('linkedin','options');?>" target="_blank"><i class="fa fa-linkedin"></i></a></li><?php } ?>
+                <?php if(get_option('fb')){ ?><li><a href="<?php echo get_option('fb');?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php } ?>
+                <?php if(get_option('twitter')){ ?><li><a href="<?php echo get_option('twitter');?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php } ?>
+                <?php if(get_option('linkedin')){ ?><li><a href="<?php echo get_option('linkedin');?>" target="_blank"><i class="fa fa-linkedin"></i></a></li><?php } ?>
                 </ul>
             </div>
             <?php } ?>

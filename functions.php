@@ -1,11 +1,4 @@
 <?php
-/**
- * Blank functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package Blank
- */
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
@@ -13,7 +6,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 }
 
 
-if ( ! function_exists( 'blank_setup' ) ) :
+if ( ! function_exists( 'configurator_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -21,14 +14,14 @@ if ( ! function_exists( 'blank_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function blank_setup() {
+	function configurator_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Blank, use a find and replace
-		 * to change 'blank' to the name of your theme in all the template files.
+		 * If you're building a theme based on Configurator, use a find and replace
+		 * to change 'configurator' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'blank', get_template_directory() . '/languages' );
+		//load_theme_textdomain( 'configurator', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -51,7 +44,7 @@ if ( ! function_exists( 'blank_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'blank' ),
+				'menu-1' => esc_html__( 'Primary', 'wpconfigurator' ),
 			)
 		);
 
@@ -76,7 +69,7 @@ if ( ! function_exists( 'blank_setup' ) ) :
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'blank_custom_background_args',
+				'configurator_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -103,7 +96,7 @@ if ( ! function_exists( 'blank_setup' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'blank_setup' );
+add_action( 'after_setup_theme', 'configurator_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -112,25 +105,25 @@ add_action( 'after_setup_theme', 'blank_setup' );
  *
  * @global int $content_width
  */
-function blank_content_width() {
+function configurator_content_width() {
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'blank_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'configurator_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'blank_content_width', 0 );
+add_action( 'after_setup_theme', 'configurator_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function blank_widgets_init() {
+function configurator_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'blank' ),
+			'name'          => esc_html__( 'Sidebar', 'wpconfigurator' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'blank' ),
+			'description'   => esc_html__( 'Add widgets here.', 'wpconfigurator' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -138,24 +131,24 @@ function blank_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'blank_widgets_init' );
+add_action( 'widgets_init', 'configurator_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function blank_scripts() {
-	wp_enqueue_style( 'blank-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'blank-style', 'rtl', 'replace' );
+function configurator_scripts() {
+	wp_enqueue_style( 'configurator-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'configurator-style', 'rtl', 'replace' );
     
     // Font-Awesome CSS.
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), null );
-	wp_enqueue_script( 'blank-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'configurator-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'blank_scripts' );
+add_action( 'wp_enqueue_scripts', 'configurator_scripts' );
 function admin_styles() {
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array(), null );
 	wp_enqueue_style( 'custom_theme_admin', get_template_directory_uri() . '/assets/css/backend_custom_style.css', array(), null );
@@ -195,10 +188,10 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 /*	Post Excerpt
 /*-----------------------------------------------------------------------------------*/
 // Remove […] string
-function blank_excerpt_more( $more ) {
+function configurator_excerpt_more( $more ) {
 	return '';
 }
-add_filter('excerpt_more', 'blank_excerpt_more');
+add_filter('excerpt_more', 'configurator_excerpt_more');
 
 // Add Shortcodes in Excerpt Field
 add_filter( 'get_the_excerpt', 'do_shortcode');
@@ -206,32 +199,32 @@ add_filter( 'get_the_excerpt', 'do_shortcode');
 /*-----------------------------------------------------------------------------------*/
 /*	Exceprt Length
 /*-----------------------------------------------------------------------------------*/
-function blank_excerpt_limit( $limit ) {
-  $blank_excerpt = explode(' ', get_the_excerpt(), $limit);
+function configurator_excerpt_limit( $limit ) {
+  $configurator_excerpt = explode(' ', get_the_excerpt(), $limit);
     
-  if ( count( $blank_excerpt )>=$limit ) {
-    array_pop($blank_excerpt);
-    $blank_excerpt = implode(" ",$blank_excerpt).'...';
+  if ( count( $configurator_excerpt )>=$limit ) {
+    array_pop($configurator_excerpt);
+    $configurator_excerpt = implode(" ",$configurator_excerpt).'...';
   } else {
-    $blank_excerpt = implode(" ",$blank_excerpt);
+    $configurator_excerpt = implode(" ",$configurator_excerpt);
   }
     
-  $blank_excerpt = preg_replace('`[[^]]*]`','',$blank_excerpt);
+  $configurator_excerpt = preg_replace('`[[^]]*]`','',$configurator_excerpt);
     
-  return $blank_excerpt;
+  return $configurator_excerpt;
 }
 add_filter( 'get_the_excerpt', 'do_shortcode');
 /*-----------------------------------------------------------------------------------*/
 /*	Breadcrumb
 /*-----------------------------------------------------------------------------------*/
-function blank_breadcrumb() {
+function configurator_breadcrumb() {
 	if (!is_home()) {
 		echo '<span class="breadcrumb-item">';
 		echo '<a itemprop="item" href="';
-		echo home_url();
+		echo esc_url();
 		echo '">';
         echo '<span itemprop="name">';
-		echo __( 'Home','blank' );
+		echo __( 'Home','wpconfigurator' );
 		echo "</span>";
 		echo "</a>";
 		echo "</span>";
@@ -288,7 +281,7 @@ function blank_breadcrumb() {
 /*-----------------------------------------------------------------------------------*/
 /*	Comments Callback
 /*-----------------------------------------------------------------------------------*/
-function blank_comment($comment, $args, $depth) {
+function configurator_comment($comment, $args, $depth) {
 	$GLOBALS['comment'] = $comment;
 	extract($args, EXTR_SKIP);
     ?>
@@ -302,21 +295,21 @@ function blank_comment($comment, $args, $depth) {
         
         <div class="commentBody">
             <div class="commentHeader">
-                <?php printf(__('<span class="fn">%s</span>','blank'), get_comment_author_link()) ?>
+                <?php printf(__('<span class="fn">%s</span>','wpconfigurator'), get_comment_author_link()) ?>
                 <span class="comment-meta">
                     <time itemprop="commentTime" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>">
                     <?php
-                        printf( __('%1$s','blank'), get_comment_date())
+                        printf( __('%1$s','wpconfigurator'), get_comment_date())
                     ?>
                     </time>
                 </span>
                  <span class="reply">
-                    <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => __(' Reply','blank')))) ?>
+                    <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => __(' Reply','wpconfigurator')))) ?>
                 </span>
             </div>
              
             <?php if ($comment->comment_approved == '0') : ?>
-                <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.','blank') ?></em>
+                <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.','wpconfigurator') ?></em>
                 <br />
             <?php endif; ?>
 
@@ -328,309 +321,195 @@ function blank_comment($comment, $args, $depth) {
     <?php
 }
 
+// Start wordpress compliances
+if ( function_exists( 'register_block_style' ) ) {
+    register_block_style(
+        'core/quote',
+        array(
+            //'name'         => 'blue-quote',
+            //'label'        => __( 'Blue Quote', 'textdomain' ),
+            //'is_default'   => true,
+            //'inline_style' => '.wp-block-quote.is-style-blue-quote { color: blue; }',
+        )
+    );
+}
 
+function wpdocs_register_my_patterns() {
+	register_block_pattern(
+		'wpdocs-my-plugin/my-awesome-pattern',
+		array(
+			// 'title'       => __( 'Two buttons', 'wpdocs-my-plugin' ),
+			// 'description' => _x( 'Two horizontal buttons, the left button is filled in, and the right button is outlined.', 'Block pattern description', 'wpdocs-my-plugin' ),
+			// 'content'     => "<!-- wp:buttons {\"align\":\"center\"} -->\n<div class=\"wp-block-buttons aligncenter\"><!-- wp:button {\"backgroundColor\":\"very-dark-gray\",\"borderRadius\":0} -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link has-background has-very-dark-gray-background-color no-border-radius\">" . esc_html__( 'Button One', 'wpdocs-my-plugin' ) . "</a></div>\n<!-- /wp:button -->\n\n<!-- wp:button {\"textColor\":\"very-dark-gray\",\"borderRadius\":0,\"className\":\"is-style-outline\"} -->\n<div class=\"wp-block-button is-style-outline\"><a class=\"wp-block-button__link has-text-color has-very-dark-gray-color no-border-radius\">" . esc_html__( 'Button Two', 'wpdocs-my-plugin' ) . "</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->",
+		)
+	);
+  }
+   
+  add_action( 'init', 'wpdocs_register_my_patterns' );
 
+  	
+add_theme_support( 'wp-block-styles' );
+add_theme_support( 'responsive-embeds' );
+add_theme_support( 'html5');
+add_theme_support( 'custom-logo');
+add_theme_support( "custom-header");
+add_theme_support( "custom-background");
+add_theme_support( "align-wide" );
+
+function wpdocs_theme_add_editor_styles() {
+    add_editor_style( 'custom-editor-style_1.css' );//this style is not exist but for compliance i add it // don't mid it
+}
+add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
+
+// end WP compliance
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-functions.php';
 }
 
 
 
-// Define path and URL to the ACF plugin.
-define( 'MY_ACF_PATH', get_stylesheet_directory() . '/includes/acf/' );
-define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/includes/acf/' );
+// create custom plugin settings menu
+add_action('admin_menu', 'theme_options_menu');
 
-// Include the ACF plugin.
-include_once( MY_ACF_PATH . 'acf.php' );
+function theme_options_menu() {
 
-// Customize the url setting to fix incorrect asset URLs.
-add_filter('acf/settings/url', 'my_acf_settings_url');
-function my_acf_settings_url( $url ) {
-    return MY_ACF_URL;
-}
+	//create new top-level menu
+	add_menu_page('Theme Settings', 'Theme Settings', 'administrator', __FILE__, 'theme_settings_page' , get_template_directory_uri().'/assets/images/configurator-icon.png' );
 
-// (Optional) Hide the ACF admin menu item.
-add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
-function my_acf_settings_show_admin( $show_admin ) {
-    return false;
+	//call register settings function
+	add_action( 'admin_init', 'register_text_field_settings' );
 }
 
 
-
-if( function_exists('acf_add_options_page') ) {
-
-    $parent = acf_add_options_page(array(
-		'icon_url' =>  get_template_directory_uri().'/assets/images/configurator-icon.png',
-        'page_title'    => 'Configurator Theme Settings',
-        'menu_title'    => 'Theme Settings',
-        'menu_slug'     => 'theme-general-settings',
-        'capability'    => 'edit_posts',
-        'redirect'  => false,
-    ));
-
-    // acf_add_options_sub_page(array(
-    //     'page_title'    => 'Theme Header',
-    //     'menu_title'    => 'Theme Header',
-    //     'parent_slug'   => $parent['menu_slug'],
-    //     'capability'    => 'edit_posts',
-    //     'redirect'  => false,
-    // ));
-
-    // acf_add_options_sub_page(array(
-    //     'page_title'    => 'Footer',
-    //     'menu_title'    => 'Footer',
-    //     'parent_slug'   => $parent['menu_slug'],
-    //     'capability'    => 'edit_posts',
-    //     'redirect'  => false,
-    // ));
-
-
+function register_text_field_settings() {
+	//register our settings
+	register_setting( 'text_field', 'top_header_text' );
+	register_setting( 'text_field', 'site_logo' );
+	register_setting( 'text_field', 'header_text' );
+	register_setting( 'text_field', 'header_socmed' );
+	register_setting( 'text_field', 'fb' );
+	register_setting( 'text_field', 'twitter' );
+	register_setting( 'text_field', 'linkedin' );
+	register_setting( 'text_field', 'footer_text' );
+	register_setting( 'text_field', 'footer_socmed' );
 }
 
-// theme option
-if( function_exists('acf_add_local_field_group') ):
+function theme_settings_page() {
+?>
+<style>
 
-	acf_add_local_field_group(array(
-		'key' => 'group_624f9d2ee6911',
-		'title' => 'Theme Settings',
-		'fields' => array(
-			array(
-				'key' => 'field_624f9d65ccfcc',
-				'label' => 'Header',
-				'name' => '',
-				'type' => 'tab',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'placement' => 'left',
-				'endpoint' => 0,
-			),
-			array(
-				'key' => 'field_624f9dc50094b',
-				'label' => 'Top Header Text',
-				'name' => 'top_header_text',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => 'If you can Dream it you can Configure it',
-				'placeholder' => 'If you can Dream it you can Configure it',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_62544b7f97089',
-				'label' => 'Site Logo',
-				'name' => 'show_site_logo',
-				'type' => 'true_false',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'message' => '',
-				'default_value' => 0,
-				'ui' => 1,
-				'ui_on_text' => 'Show',
-				'ui_off_text' => 'Hide',
-			),
-			array(
-				'key' => 'field_625442d1d0d94',
-				'label' => 'Header Text',
-				'name' => 'show_header_text',
-				'type' => 'true_false',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'message' => '',
-				'default_value' => 0,
-				'ui' => 1,
-				'ui_on_text' => 'Show',
-				'ui_off_text' => 'Hide',
-			),
-			array(
-				'key' => 'field_625442b9d0d93',
-				'label' => 'Header Social Media',
-				'name' => 'show_header_socmed',
-				'type' => 'true_false',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'message' => '',
-				'default_value' => 0,
-				'ui' => 1,
-				'ui_on_text' => 'Show',
-				'ui_off_text' => 'Hide',
-			),
-			array(
-				'key' => 'field_624fa2e77a6f8',
-				'label' => 'Footer',
-				'name' => '',
-				'type' => 'tab',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'placement' => 'top',
-				'endpoint' => 0,
-			),
-			array(
-				'key' => 'field_624fa92042a2f',
-				'label' => 'Footer Text',
-				'name' => 'footer_text',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => 'Configurator',
-				'placeholder' => 'Configurator',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_624ffc957f3e1',
-				'label' => 'Footer Social Media',
-				'name' => 'show_footer_socmed',
-				'type' => 'true_false',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'message' => '',
-				'default_value' => 0,
-				'ui' => 1,
-				'ui_on_text' => 'Show',
-				'ui_off_text' => 'Hide',
-			),
-			array(
-				'key' => 'field_624f9d72ccfcd',
-				'label' => 'Social Media',
-				'name' => '',
-				'type' => 'tab',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'placement' => 'top',
-				'endpoint' => 0,
-			),
-			array(
-				'key' => 'field_624f9f9c40b0c',
-				'label' => 'Facebook',
-				'name' => 'facebook',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => 'https://www.facebook.com/',
-				'prepend' => '<i class="fa fa-facebook"></i>',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_624fa0c1c6a53',
-				'label' => 'Twitter',
-				'name' => 'twitter',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => 'https://twitter.com/',
-				'prepend' => '<i class="fa fa-twitter"></i>',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_624fa12e18212',
-				'label' => 'Linkedin',
-				'name' => 'linkedin',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => 'https://www.linkedin.com/',
-				'prepend' => '<i class="fa fa-linkedin"></i>',
-				'append' => '',
-				'maxlength' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'options_page',
-					'operator' => '==',
-					'value' => 'theme-general-settings',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'seamless',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => true,
-		'description' => '',
-	));
+</style>
+
+<div class="wrap" style="margin-bottom:10px;">
+<h1>Configurator Theme Settings</h1>
+</div>
+<form method="post" action="options.php">
+	<?php settings_fields( 'text_field' ); ?>
+    <?php do_settings_sections( 'text_field' ); ?>
+
+
+	<hr>
+	<div class="field-holder">
+		<label>Top Header Text </label>
+		<input type="text" name="top_header_text" value="<?php echo get_option('top_header_text'); ?>"  placeholder="If you can Dream it you can Configure it"/>
+	</div>
+
+	<div class="field-holder">
+		<label>Footer Text </label>
+		<input type="text" name="footer_text" value="<?php echo get_option('footer_text'); ?>"  placeholder="Configurator"/>
+	</div>
+
+	<div class="field-holder has_icon">
+		<label>Facebook</label>
+		<div>
+			<i class="fa fa-facebook"></i>
+			<input type="text" name="fb" value="<?php echo get_option('fb'); ?>"  placeholder="https://www.facebook.com/"/>
+		</div>
+	</div>
+
+	<div class="field-holder has_icon">
+		<label>Twitter</label>
+		<div>
+			<i class="fa fa-twitter"></i>
+			<input type="text" name="twitter" value="<?php echo get_option('twitter'); ?>"  placeholder="https://twitter.com/"/>
+		</div>
+	</div>
+
+	<div class="field-holder has_icon">
+		<label>Linkedin</label>
+		<div>
+			<i class="fa fa-linkedin"></i>
+			<input type="text" name="linkedin" value="<?php echo get_option('linkedin'); ?>"  placeholder="https://www.linkedin.com/"/>
+		</div>
+	</div>
+
+	<div class="field-holder">
+		<label>Site Logo </label>
+		<input type="text" name="site_logo" class="site_logo_val" value="<?php echo get_option('site_logo'); ?>" hidden />
+		<label class="switch">
+			<input class="site_logo_check" type="checkbox" <?php echo (get_option('site_logo')=="true")?'checked':null; ?>>
+			<span class="slider"></span>
+		</label>
+	</div>
+
+	<div class="field-holder">
+		<label>Header Text</label>
+		<input type="text" name="header_text" class="header_text_val" value="<?php echo get_option('header_text'); ?>" hidden />
+		<label class="switch">
+			<input class="header_text_check" type="checkbox" <?php echo (get_option('header_text')=="true")?'checked':null; ?>>
+			<span class="slider"></span>
+		</label>
+	</div>
+
+	<div class="field-holder">
+		<label>Header Social Media</label>
+		<input type="text" name="header_socmed" class="header_socmed_val" value="<?php echo get_option('header_socmed'); ?>" hidden />
+		<label class="switch">
+			<input class="header_socmed_check" type="checkbox" <?php echo (get_option('header_socmed')=="true")?'checked':null; ?>>
+			<span class="slider"></span>
+		</label>
+	</div>
+
 	
-	endif;
+
+	
+
+	<div class="field-holder">
+		<label>Footer Social Media</label>
+		<input type="text" name="footer_socmed" class="footer_socmed_val" value="<?php echo get_option('footer_socmed'); ?>" hidden />
+		<label class="switch">
+			<input class="footer_socmed_check" type="checkbox" <?php echo (get_option('footer_socmed')=="true")?'checked':null; ?>>
+			<span class="slider"></span>
+		</label>
+	</div>
+	<?php submit_button(); ?>
+</form>
+
+	<script>
+		jQuery(function($){
+
+			$('.site_logo_check').on('click',function(){
+				var site_logoIsChecked = $('.site_logo_check:checkbox:checked').length > 0;
+				$('.site_logo_val').attr('value',site_logoIsChecked);
+			});
+
+			$('.header_text_check').on('click',function(){
+				var header_textIsChecked = $('.header_text_check:checkbox:checked').length > 0;
+				$('.header_text_val').attr('value',header_textIsChecked);
+			});
+
+			$('.header_socmed_check').on('click',function(){
+				var header_socmedIsChecked = $('.header_socmed_check:checkbox:checked').length > 0;
+				$('.header_socmed_val').attr('value',header_socmedIsChecked);
+			});
+
+			$('.footer_socmed_check').on('click',function(){
+				var footer_socmedIsChecked = $('.footer_socmed_check:checkbox:checked').length > 0;
+				$('.footer_socmed_val').attr('value',footer_socmedIsChecked);
+			});
+
+			
+			
+		});
+	</script>
+<?php }  ?>

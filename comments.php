@@ -1,20 +1,4 @@
 <?php
-/**
- * The template for displaying comments
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Blank
- */
-
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
 if ( post_password_required() ) {
 	return;
 }
@@ -32,13 +16,13 @@ if ( post_password_required() ) {
 			if ( '1' === $blank_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'blank' ),
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'wpconfigurator' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
 				printf( 
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s Comment', '%1$s Comments', $blank_comment_count, 'comments title', 'blank' ) ),
+					esc_html( _nx( '%1$s Comment', '%1$s Comments', $blank_comment_count, 'comments title', 'wpconfigurator' ) ),
 					number_format_i18n( $blank_comment_count ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			}
@@ -71,7 +55,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'blank' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'wpconfigurator' ); ?></p>
 			<?php
 		endif;
 

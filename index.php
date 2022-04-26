@@ -1,17 +1,4 @@
 <?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Blank
- */
-
 get_header();
 ?>
     <div class="site-content">
@@ -43,9 +30,9 @@ get_header();
                         endwhile;
                         the_posts_navigation(
                             array(
-                                'prev_text' => __('Older Articles', 'theme_textdomain').'<i class="fa fa-angle-right"></i>',
-                                'next_text' => '<i class="fa fa-angle-left"></i>'.__('Newer Articles', 'theme_textdomain'),
-                                'screen_reader_text' => __('Posts navigation', 'theme_textdomain')
+                                'prev_text' => __('Older Articles', 'wpconfigurator').'<i class="fa fa-angle-right"></i>',
+                                'next_text' => '<i class="fa fa-angle-left"></i>'.__('Newer Articles', 'wpconfigurator'),
+                                'screen_reader_text' => __('Posts navigation', 'wpconfigurator')
                             )
                         );
 

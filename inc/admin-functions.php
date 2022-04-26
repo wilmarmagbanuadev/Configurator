@@ -35,18 +35,18 @@ function configurator_elementor_fail_load_admin_notice() {
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
-		$message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with Elementor Page Builder plugin, they work perfectly together!', 'configurator-elementor' );
+		$message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with Elementor Page Builder plugin, they work perfectly together!', 'wpconfigurator' );
 
-		$button_text = __( 'Activate Elementor', 'configurator-elementor' );
+		$button_text = __( 'Activate Elementor', 'wpconfigurator' );
 		$button_link = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
 	} else {
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
 		}
 
-		$message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with Elementor Page Builder plugin, they work perfectly together!', 'configurator-elementor' );
+		$message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with Elementor Page Builder plugin, they work perfectly together!', 'wpconfigurator' );
 
-		$button_text = __( 'Install Elementor', 'configurator-elementor' );
+		$button_text = __( 'Install Elementor', 'wpconfigurator' );
 		$button_link = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
 	}
 
@@ -55,17 +55,17 @@ function configurator_elementor_fail_load_admin_notice() {
 
 	?>
 	<style>
-		.notice.configurator-elementor-notice {
+		.notice.configurator-notice {
 			border: 1px solid #ccd0d4;
 			border-left: 4px solid #9b0a46 !important;
 			box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 			display: flex;
 			padding: 0px;
 		}
-		.rtl .notice.configurator-elementor-notice {
+		.rtl .notice.configurator-notice {
 			border-right-color: #9b0a46 !important;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-aside {
+		.notice.configurator-notice .configurator-notice-aside {
 			width: 50px;
 			display: flex;
 			align-items: start;
@@ -73,29 +73,29 @@ function configurator_elementor_fail_load_admin_notice() {
 			padding-top: 15px;
 			background: rgba(215,43,63,0.04);
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-aside img{
+		.notice.configurator-notice .configurator-notice-aside img{
 			width: 1.5rem;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-inner {
+		.notice.configurator-notice .configurator-notice-inner {
 			display: table;
 			padding: 20px 0px;
 			width: 100%;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-content {
+		.notice.configurator-notice .configurator-notice-content {
 			padding: 0 20px;
 		}
-		.notice.configurator-elementor-notice p {
+		.notice.configurator-notice p {
 			padding: 0;
 			margin: 0;
 		}
-		.notice.configurator-elementor-notice h3 {
+		.notice.configurator-notice h3 {
 			margin: 0 0 5px;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-install-now {
+		.notice.configurator-notice .configurator-install-now {
 			display: block;
 			margin-top: 15px;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-install-now .configurator-elementor-install-button {
+		.notice.configurator-notice .configurator-install-now .configurator-install-button {
 			background: #127DB8;
 			border-radius: 3px;
 			color: #fff;
@@ -105,28 +105,28 @@ function configurator_elementor_fail_load_admin_notice() {
 			padding: 0.4375rem 0.75rem;
 			text-transform: capitalize;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-install-now .configurator-elementor-install-button:active {
+		.notice.configurator-notice .configurator-install-now .configurator-install-button:active {
 			transform: translateY(1px);
 		}
 		@media (max-width: 767px) {
-			.notice.configurator-elementor-notice.configurator-elementor-install-elementor {
+			.notice.configurator-notice.configurator-install-elementor {
 				padding: 0px;
 			}
-			.notice.configurator-elementor-notice .configurator-elementor-notice-inner {
+			.notice.configurator-notice .configurator-notice-inner {
 				display: block;
 				padding: 10px;
 			}
-			.notice.configurator-elementor-notice .configurator-elementor-notice-inner .configurator-elementor-notice-content {
+			.notice.configurator-notice .configurator-notice-inner .configurator-notice-content {
 				display: block;
 				padding: 0;
 			}
-			.notice.configurator-elementor-notice .configurator-elementor-notice-inner .configurator-elementor-install-now {
+			.notice.configurator-notice .configurator-notice-inner .configurator-install-now {
 				display: none;
 			}
 		}
 	</style>
 	<script>jQuery( function( $ ) {
-			$( 'div.notice.configurator-elementor-install-elementor' ).on( 'click', 'button.notice-dismiss', function( event ) {
+			$( 'div.notice.configurator-install-elementor' ).on( 'click', 'button.notice-dismiss', function( event ) {
 				event.preventDefault();
 
 				$.post( ajaxurl, {
@@ -134,13 +134,13 @@ function configurator_elementor_fail_load_admin_notice() {
 				} );
 			} );
 		} );</script>
-	<div class="notice updated  configurator-elementor-notice configurator-elementor-install-elementor">
-		<div class="configurator-elementor-notice-inner">
-			<div class="configurator-elementor-notice-content">
-				<h3><?php esc_html_e( 'Thanks for installing Configurator Theme!', 'configurator-elementor' ); ?></h3>
+	<div class="notice updated  configurator-notice configurator-install-elementor">
+		<div class="configurator-notice-inner">
+			<div class="configurator-notice-content">
+				<h3><?php esc_html_e( 'Thanks for installing Configurator Theme!', 'wpconfigurator' ); ?></h3>
 				<p><?php echo esc_html( $message ); ?></p>
-				<div class="configurator-elementor-install-now">
-					<a class="configurator-elementor-install-button" href="<?php echo esc_attr( $button_link ); ?>"><?php echo esc_html( $button_text ); ?></a>
+				<div class="configurator-install-now">
+					<a class="configurator-install-button" href="<?php echo esc_attr( $button_link ); ?>"><?php echo esc_html( $button_text ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -179,18 +179,18 @@ function woocommerce_elements_fail_load_admin_notice() {
 			return;
 		}
 
-		$woocommerce_message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with WooCommerce plugin, they work perfectly together!', 'configurator-woocommerce' );
+		$woocommerce_message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with WooCommerce plugin, they work perfectly together!', 'wpconfigurator' );
 
-		$woocommerce_button_text = __( 'Activate Woocommerce', 'configurator-woocommerce' );
+		$woocommerce_button_text = __( 'Activate Woocommerce', 'wpconfigurator' );
 		$woocommerce_button_link = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $woocommerce_plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $woocommerce_plugin );
 	} else {
 		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
 		}
 
-		$woocommerce_message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with WooCommerce plugin, they work perfectly together!', 'configurator-woocommerce' );
+		$woocommerce_message = __( 'Configurator Theme is a lightweight starter theme. We recommend you to use it together with WooCommerce plugin, they work perfectly together!', 'wpconfigurator' );
 
-		$woocommerce_button_text = __( 'Install Woocommerce', 'configurator-woocommerce' );
+		$woocommerce_button_text = __( 'Install Woocommerce', 'wpconfigurator' );
 		$woocommerce_button_link = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
 	}
 
@@ -198,17 +198,17 @@ function woocommerce_elements_fail_load_admin_notice() {
 
 	?>
 	<style>
-		.notice.configurator-elementor-notice {
+		.notice.configurator-notice {
 			border: 1px solid #ccd0d4;
 			border-left: 4px solid #9b0a46 !important;
 			box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 			display: flex;
 			padding: 0px;
 		}
-		.rtl .notice.configurator-elementor-notice {
+		.rtl .notice.configurator-notice {
 			border-right-color: #9b0a46 !important;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-aside {
+		.notice.configurator-notice .configurator-notice-aside {
 			width: 50px;
 			display: flex;
 			align-items: start;
@@ -216,29 +216,29 @@ function woocommerce_elements_fail_load_admin_notice() {
 			padding-top: 15px;
 			background: rgba(215,43,63,0.04);
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-aside img{
+		.notice.configurator-notice .configurator-notice-aside img{
 			width: 1.5rem;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-inner {
+		.notice.configurator-notice .configurator-notice-inner {
 			display: table;
 			padding: 20px 0px;
 			width: 100%;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-notice-content {
+		.notice.configurator-notice .configurator-notice-content {
 			padding: 0 20px;
 		}
-		.notice.configurator-elementor-notice p {
+		.notice.configurator-notice p {
 			padding: 0;
 			margin: 0;
 		}
-		.notice.configurator-elementor-notice h3 {
+		.notice.configurator-notice h3 {
 			margin: 0 0 5px;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-install-now {
+		.notice.configurator-notice .configurator-install-now {
 			display: block;
 			margin-top: 15px;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-install-now .configurator-elementor-install-button {
+		.notice.configurator-notice .configurator-install-now .configurator-install-button {
 			background: #127DB8;
 			border-radius: 3px;
 			color: #fff;
@@ -248,28 +248,28 @@ function woocommerce_elements_fail_load_admin_notice() {
 			padding: 0.4375rem 0.75rem;
 			text-transform: capitalize;
 		}
-		.notice.configurator-elementor-notice .configurator-elementor-install-now .configurator-elementor-install-button:active {
+		.notice.configurator-notice .configurator-install-now .configurator-install-button:active {
 			transform: translateY(1px);
 		}
 		@media (max-width: 767px) {
-			.notice.configurator-elementor-notice.configurator-elementor-install-woocommerce {
+			.notice.configurator-notice.configurator-install-woocommerce {
 				padding: 0px;
 			}
-			.notice.configurator-elementor-notice .configurator-elementor-notice-inner {
+			.notice.configurator-notice .configurator-notice-inner {
 				display: block;
 				padding: 10px;
 			}
-			.notice.configurator-elementor-notice .configurator-elementor-notice-inner .configurator-elementor-notice-content {
+			.notice.configurator-notice .configurator-notice-inner .configurator-notice-content {
 				display: block;
 				padding: 0;
 			}
-			.notice.configurator-elementor-notice .configurator-elementor-notice-inner .configurator-elementor-install-now {
+			.notice.configurator-notice .configurator-notice-inner .configurator-install-now {
 				display: none;
 			}
 		}
 	</style>
 	<script>jQuery( function( $ ) {
-			$( 'div.notice.configurator-elementor-install-woocommerce' ).on( 'click', 'button.notice-dismiss', function( event ) {
+			$( 'div.notice.configurator-install-woocommerce' ).on( 'click', 'button.notice-dismiss', function( event ) {
 				event.preventDefault();
 
 				$.post( ajaxurl, {
@@ -278,13 +278,13 @@ function woocommerce_elements_fail_load_admin_notice() {
 			} );
 		} );</script>
 	
-	<div class="notice updated  configurator-elementor-notice configurator-elementor-install-woocommerce" style="<?php if ( class_exists( 'woocommerce' ) ) { echo 'display:none';} ?>">
-		<div class="configurator-elementor-notice-inner">
-			<div class="configurator-elementor-notice-content">
-				<h3><?php esc_html_e( 'Thanks for installing Configurator Theme!', 'configurator-elementor' ); ?></h3>
+	<div class="notice updated  configurator-notice configurator-install-woocommerce" style="<?php if ( class_exists( 'woocommerce' ) ) { echo 'display:none';} ?>">
+		<div class="configurator-notice-inner">
+			<div class="configurator-notice-content">
+				<h3><?php esc_html_e( 'Thanks for installing Configurator Theme!', 'wpconfigurator' ); ?></h3>
 				<p><?php echo esc_html( $woocommerce_message ); ?></p>
-				<div class="configurator-elementor-install-now">
-					<a class="configurator-elementor-install-button" href="<?php echo esc_attr( $woocommerce_button_link ); ?>"><?php echo esc_html( $woocommerce_button_text ); ?></a>
+				<div class="configurator-install-now">
+					<a class="configurator-install-button" href="<?php echo esc_attr( $woocommerce_button_link ); ?>"><?php echo esc_html( $woocommerce_button_text ); ?></a>
 				</div>
 			</div>
 		</div>

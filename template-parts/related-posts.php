@@ -19,7 +19,7 @@
     if ($categories) {
         $my_query = new wp_query( $args );
         if( $my_query->have_posts() ) {
-            echo '<div class="relatedposts"><h3 class="section-heading">' . __('Recent Posts','Blank') . '</h3><ul>';
+            echo '<div class="relatedposts"><h3 class="section-heading">' . __('Recent Posts','wpconfigurator') . '</h3><ul>';
             while( $my_query->have_posts() ) {
                 $my_query->the_post();?>
                 <li>
@@ -33,10 +33,10 @@
                         <?php } ?>
                         <div class="relatedcontent">
                             <?php 
-                                $categories_list = get_the_category_list( esc_html__( ', ', 'blank' ) );
+                                $categories_list = get_the_category_list( esc_html__( ', ', 'wpconfigurator' ) );
                                 if ( $categories_list ) {
                                     /* translators: 1: list of categories. */
-                                    printf( '<span class="cat-links">' . esc_html__( '%1$s', 'blank' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                    printf( '<span class="cat-links">' . esc_html__( '%1$s', 'wpconfigurator' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 }
                             ?>
                             <header>
@@ -46,7 +46,7 @@
                             </header><!--.header-->
                             <div class="post-meta">
                                 <span class="post-author">
-                                    <?php echo esc_html__( 'by ', 'blank' ) ?>
+                                    <?php echo esc_html__( 'by ', 'wpconfigurator' ) ?>
                                     <?php the_author_posts_link(); ?>
                                 </span>
                             </div>

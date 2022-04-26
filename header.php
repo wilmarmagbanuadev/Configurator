@@ -1,6 +1,4 @@
-<?php
-
-?>
+<?php settings_fields( 'text_field' ); ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -14,23 +12,23 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'blank' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wpconfigurator' ); ?></a>
 
 	<header id="masthead" class="site-header">
-        <?php if(get_field('top_header_text','options') || get_field('facebook','options') || get_field('twitter','options') || get_field('linkedin','options')){ ?>
-            <?php if(get_field('show_header_text','options') || get_field('show_header_socmed','options')){ ?>
+        <?php if(get_option('top_header_text') || get_option('fb') || get_option('twitter') || get_option('linkedin')){ ?>
+            <?php if(get_option('top_header_text') || get_option('header_socmed')=='true'){ ?>
             <div class="top-header-bar">
-                <?php if(get_field('show_header_text','options')){ ?>
+                <?php if(get_option('top_header_text')){ ?>
                     <div class="recent-news-feed">
-                        <?php echo (get_field('top_header_text','options'))?get_field('top_header_text','options'):'If you can Dream it you can Configure it';?>
+                        <?php echo (get_option('top_header_text'))?get_option('top_header_text'):'If you can Dream it you can Configure it';?>
                     </div>
                <?php } ?>
-                <?php if(get_field('show_header_socmed','options')){ ?>
+                <?php if(get_option('header_socmed')=='true'){ ?>
                 <div class="header-social-links">
                     <ul>
-                        <?php if(get_field('facebook','options')){ ?><li><a href="<?php the_field('facebook','options');?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php } ?>
-                        <?php if(get_field('twitter','options')){ ?><li><a href="<?php the_field('twitter','options');?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php } ?>
-                        <?php if(get_field('linkedin','options')){ ?><li><a href="<?php the_field('linkedin','options');?>" target="_blank"><i class="fa fa-linkedin"></i></a></li><?php } ?>
+                        <?php if(get_option('fb')){ ?><li><a href="<?php echo get_option('fb');?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php } ?>
+                        <?php if(get_option('twitter')){ ?><li><a href="<?php echo get_option('twitter');?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php } ?>
+                        <?php if(get_option('linkedin')){ ?><li><a href="<?php echo get_option('linkedin');?>" target="_blank"><i class="fa fa-linkedin"></i></a></li><?php } ?>
                     </ul>
                 </div>
                 <?php } ?>
@@ -41,17 +39,17 @@
             <div class="site-branding">
                 <?php
                 $site_logo = the_custom_logo();
-                if(get_field('show_site_logo','options')){
+                if(get_option('site_logo')=='true'){
                     echo ($site_logo)?$site_logo:'<img src="'.get_template_directory_uri().'/assets/images/configurator-logo.png">';
                 }
                 
                 if ( is_front_page() && is_home() ) :
                     ?>
-                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo (get_bloginfo( 'name' ))? get_bloginfo( 'name' ):'Configurator'; ?></a></h1>
+                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo (get_bloginfo( 'name' ))? get_bloginfo( 'name' ):'wpconfigurator'; ?></a></h1>
                     <?php
                 else :
                     ?>
-                    <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo (get_bloginfo( 'name' ))? get_bloginfo( 'name' ):'Configurator'; ?></a></p>
+                    <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo (get_bloginfo( 'name' ))? get_bloginfo( 'name' ):'wpconfigurator'; ?></a></p>
                     <?php
                 endif;
                 $blank_description = get_bloginfo( 'description', 'display' );

@@ -1,22 +1,15 @@
 <?php
-/**
- * Custom template tags for this theme
- *
- * Eventually, some of the functionality here could be replaced by core features.
- *
- * @package Blank
- */
 
-if ( ! function_exists( 'blank_posted_on' ) ) :
+if ( ! function_exists( 'configurator_posted_on' ) ) :
 	/**
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
-	function blank_posted_on() {
+	function configurator_posted_on() {
         
-        $categories_list = get_the_category_list( esc_html__( ', ', 'blank' ) );
+        $categories_list = get_the_category_list( esc_html__( ', ', 'wpconfigurator' ) );
         if ( $categories_list ) {
             /* translators: 1: list of categories. */
-            printf( '<span class="cat-links">' . esc_html__( '%1$s', 'blank' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            printf( '<span class="cat-links">' . esc_html__( '%1$s', 'wpconfigurator' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
         
 		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
@@ -34,7 +27,7 @@ if ( ! function_exists( 'blank_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( '%s', 'post date', 'blank' ),
+			esc_html_x( '%s', 'post date', 'wpconfigurator' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
@@ -43,14 +36,14 @@ if ( ! function_exists( 'blank_posted_on' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'blank_posted_by' ) ) :
+if ( ! function_exists( 'configurator_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function blank_posted_by() {
+	function configurator_posted_by() {
 		$byline = sprintf(
 			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'blank' ),
+			esc_html_x( 'by %s', 'post author', 'wpconfigurator' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
@@ -59,19 +52,19 @@ if ( ! function_exists( 'blank_posted_by' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'blank_entry_footer' ) ) :
+if ( ! function_exists( 'configurator_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
-	function blank_entry_footer() {
+	function configurator_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'blank' ) );
+			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'wpconfigurator' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'blank' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'wpconfigurator' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 
@@ -81,7 +74,7 @@ if ( ! function_exists( 'blank_entry_footer' ) ) :
 				sprintf(
 					wp_kses(
 						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'blank' ),
+						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'wpconfigurator' ),
 						array(
 							'span' => array(
 								'class' => array(),
@@ -98,7 +91,7 @@ if ( ! function_exists( 'blank_entry_footer' ) ) :
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'blank' ),
+					__( 'Edit <span class="screen-reader-text">%s</span>', 'wpconfigurator' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -113,14 +106,14 @@ if ( ! function_exists( 'blank_entry_footer' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'blank_post_thumbnail' ) ) :
+if ( ! function_exists( 'configurator_post_thumbnail' ) ) :
 	/**
 	 * Displays an optional post thumbnail.
 	 *
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function blank_post_thumbnail() {
+	function configurator_post_thumbnail() {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}

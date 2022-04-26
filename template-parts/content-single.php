@@ -1,14 +1,3 @@
-<?php
-/**
- * Template part for displaying posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Blank
- */
-
-?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="inner-post">
         <div class="single-post-breadcrumb">
@@ -18,7 +7,7 @@
                         woocommerce_breadcrumb();
                     }
                 }else{
-                    blank_breadcrumb();
+                    configurator_breadcrumb();
                 }
                 
             ?>

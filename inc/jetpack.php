@@ -1,19 +1,5 @@
 <?php
-/**
- * Jetpack Compatibility File
- *
- * @link https://jetpack.com/
- *
- * @package Blank
- */
 
-/**
- * Jetpack setup function.
- *
- * See: https://jetpack.com/support/infinite-scroll/
- * See: https://jetpack.com/support/responsive-videos/
- * See: https://jetpack.com/support/content-options/
- */
 function blank_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(

@@ -1,17 +1,9 @@
 <?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package Blank
- */
 
 get_header();
 ?>
     <div class="site-content">
         <main id="primary" class="site-main">
-
             <?php
             while ( have_posts() ) :
                 the_post(); 
@@ -23,10 +15,10 @@ get_header();
                     <div class="single-post-thumbnail <?php echo $class; ?>" style="background-image:url(<?php the_post_thumbnail_url(); ?>);">
                             <div class="single-post-header-content">
                                 <?php 
-                                    $categories_list = get_the_category_list( esc_html__( ', ', 'blank' ) );
+                                    $categories_list = get_the_category_list( esc_html__( ', ', 'wpconfigurator' ) );
                                     if ( $categories_list ) {
                                         /* translators: 1: list of categories. */
-                                        printf( '<span class="cat-links">' . esc_html__( '%1$s', 'blank' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                        printf( '<span class="cat-links">' . esc_html__( '%1$s', 'wpconfigurator' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                     }
 
                                     the_title( '<h1 class="entry-title">', '</h1>' );
@@ -34,7 +26,7 @@ get_header();
                                 <div class="single-post-meta">
                                     <span class="post-author">
                                         <?php echo get_avatar( get_the_author_meta( 'ID' ) , 60 ); ?>
-                                        <?php echo esc_html__( 'by ', 'blank' ) ?>
+                                        <?php echo esc_html__( 'by ', 'wpconfigurator' ) ?>
                                         <?php the_author_posts_link(); ?>
                                     </span>
                                     <span class="post-date">
@@ -42,7 +34,7 @@ get_header();
                                             <?php the_time('d M, Y'); ?>
                                         </time>
                                     </span>
-                                    <span class="post-comments"> <?php comments_popup_link( __( 'Leave a Comment', 'blank' ), __( '1 Comment', 'blank' ), __( '% Comments', 'blank' ), 'comments-link', __( 'Comments are off', 'blank' )); ?>
+                                    <span class="post-comments"> <?php comments_popup_link( __( 'Leave a Comment', 'wpconfigurator' ), __( '1 Comment', 'wpconfigurator' ), __( '% Comments', 'wpconfigurator' ), 'comments-link', __( 'Comments are off', 'wpconfigurator' )); ?>
                                     </span>
                                 </div>
 
@@ -57,8 +49,8 @@ get_header();
                     
                     /*the_post_navigation(
                         array(
-                            'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'blank' ) . '</span> <span class="nav-title">%title</span>',
-                            'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'blank' ) . '</span> <span class="nav-title">%title</span>',
+                            'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'wpconfigurator' ) . '</span> <span class="nav-title">%title</span>',
+                            'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'wpconfigurator' ) . '</span> <span class="nav-title">%title</span>',
                         )
                     );
                     */
